@@ -1,0 +1,31 @@
+﻿@model Mediares.Models.ViewModels.TurmaFormularioDeCadastro
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Criar turma</h1>
+
+<div class="row">
+    <div col="col-md-4">
+        <form asp-action="Create">
+            <div class="form-group">
+                <label asp-for="Turma.NomeTurma" class="custom-control-label"></label>
+                <input asp-for="Turma.NomeTurma" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Turma.CargaHoraria" class="custom-control-label"></label>
+                <input asp-for="Turma.CargaHoraria" class="form-control" />
+            </div>
+
+            <div class="form-group">    
+            <label asp-for="Turma.DisciplinaId" class="control-label"></label>   
+            <select asp-for="Turma.DisciplinaId" asp-items="@(new SelectList(Model.Disciplinas,"DisciplinaID", "Nome"))" class="form-control"></select> </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-dark" />
+            </div>
+        </form>
+    </div>
+</div>
+

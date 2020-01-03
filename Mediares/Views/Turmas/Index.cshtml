@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Mediares.Models.Turma>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Turmas</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-dark">Criar turma</a>
+</p>
+
+<p>Pagina de turmas abertas</p>
+
+<table class="table table-hover table-striped ">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(Model => Model.NomeTurma);
+            </th>
+            <th>
+                @Html.DisplayNameFor(Model => Model.CargaHoraria);
+            </th>
+            <th>
+                @Html.DisplayNameFor(Model => Model.Disciplina);
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeTurma);
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CargaHoraria);
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Disciplina);
+            </td>
+        </tr>
+        }
+
+
+
+    </tbody>
+</table>

@@ -8,6 +8,7 @@ namespace Mediares.Models
 	public class Turma
 	{
 		public int Id { get; set; }
+		public string NomeTurma { get; set; }
 		public int CargaHoraria { get; set; }
 		public Disciplina Disciplina { get; set; }
 		public int DisciplinaId { get; set; }
