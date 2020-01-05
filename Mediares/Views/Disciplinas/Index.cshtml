@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<Mediares.Models.Disciplina>
 
 @{
-    ViewData["Title"] = "Cadastro de Disciplinas";
+    ViewData["Title"] = "Index";
 }
 
-<h1>Cadastro de Disciplinas</h1>
+<h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Criar nova disciplina</a>
+    <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -25,9 +25,9 @@
                 @Html.DisplayFor(modelItem => item.Nome)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.DisciplinaID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.DisciplinaID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.DisciplinaID">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.DisciplinaId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.DisciplinaId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.DisciplinaId">Delete</a>
             </td>
         </tr>
 }

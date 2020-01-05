@@ -7,7 +7,7 @@ namespace Mediares.Models
 {
 	public class Disciplina
 	{
-		public int DisciplinaID { get; set; }
+		public int DisciplinaId { get; set; }
 		public string Nome { get; set; }
 
 
@@ -15,9 +15,9 @@ namespace Mediares.Models
 		{
 		}
 
-		public Disciplina(int disciplinaID, string nome)
+		public Disciplina(int disciplinaId, string nome)
 		{
-			DisciplinaID = disciplinaID;
+			DisciplinaId = disciplinaId;
 			Nome = nome;
 		}
 	}

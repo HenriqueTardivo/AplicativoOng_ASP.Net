@@ -34,7 +34,7 @@ namespace Mediares.Controllers
             }
 
             var disciplina = await _context.Disciplina
-                .FirstOrDefaultAsync(m => m.DisciplinaID == id);
+                .FirstOrDefaultAsync(m => m.DisciplinaId == id);
             if (disciplina == null)
             {
                 return NotFound();
@@ -54,7 +54,7 @@ namespace Mediares.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("DisciplinaID,Nome")] Disciplina disciplina)
+        public async Task<IActionResult> Create([Bind("DisciplinaId,Nome")] Disciplina disciplina)
         {
             if (ModelState.IsValid)
             {
@@ -86,9 +86,9 @@ namespace Mediares.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("DisciplinaID,Nome")] Disciplina disciplina)
+        public async Task<IActionResult> Edit(int id, [Bind("DisciplinaId,Nome")] Disciplina disciplina)
         {
-            if (id != disciplina.DisciplinaID)
+            if (id != disciplina.DisciplinaId)
             {
                 return NotFound();
             }
@@ -102,7 +102,7 @@ namespace Mediares.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DisciplinaExists(disciplina.DisciplinaID))
+                    if (!DisciplinaExists(disciplina.DisciplinaId))
                     {
                         return NotFound();
                     }
@@ -125,7 +125,7 @@ namespace Mediares.Controllers
             }
 
             var disciplina = await _context.Disciplina
-                .FirstOrDefaultAsync(m => m.DisciplinaID == id);
+                .FirstOrDefaultAsync(m => m.DisciplinaId == id);
             if (disciplina == null)
             {
                 return NotFound();
@@ -147,7 +147,7 @@ namespace Mediares.Controllers
 
         private bool DisciplinaExists(int id)
         {
-            return _context.Disciplina.Any(e => e.DisciplinaID == id);
+            return _context.Disciplina.Any(e => e.DisciplinaId == id);
         }
     }
 }

@@ -10,23 +10,23 @@ using Mediares.Models;
 
 namespace Mediares.Controllers
 {
-    public class TurmasController : Controller
+    public class AlunoesController : Controller
     {
         private readonly MediaresContext _context;
 
-        public TurmasController(MediaresContext context)
+        public AlunoesController(MediaresContext context)
         {
             _context = context;
         }
 
-        // GET: Turmas
+        // GET: Alunoes
         public async Task<IActionResult> Index()
         {
-            var mediaresContext = _context.Turma.Include(t => t.Disciplina);
+            var mediaresContext = _context.Aluno.Include(a => a.Turma);
             return View(await mediaresContext.ToListAsync());
         }
 
-        // GET: Turmas/Details/5
+        // GET: Alunoes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,42 +34,42 @@ namespace Mediares.Controllers
                 return NotFound();
             }
 
-            var turma = await _context.Turma
-                .Include(t => t.Disciplina)
+            var aluno = await _context.Aluno
+                .Include(a => a.Turma)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (turma == null)
+            if (aluno == null)
             {
                 return NotFound();
             }
 
-            return View(turma);
+            return View(aluno);
         }
 
-        // GET: Turmas/Create
+        // GET: Alunoes/Create
         public IActionResult Create()
         {
-            ViewData["DisciplinaId"] = new SelectList(_context.Disciplina, "DisciplinaId", "DisciplinaId");
+            ViewData["TurmaId"] = new SelectList(_context.Turma, "Id", "Id");
             return View();
         }
 
-        // POST: Turmas/Create
+        // POST: Alunoes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NomeTurma,CargaHoraria,DisciplinaId")] Turma turma)
+        public async Task<IActionResult> Create([Bind("Id,Nome,Telefone,TurmaId")] Aluno aluno)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(turma);
+                _context.Add(aluno);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DisciplinaId"] = new SelectList(_context.Disciplina, "DisciplinaId", "DisciplinaId", turma.DisciplinaId);
-            return View(turma);
+            ViewData["TurmaId"] = new SelectList(_context.Turma, "Id", "Id", aluno.TurmaId);
+            return View(aluno);
         }
 
-        // GET: Turmas/Edit/5
+        // GET: Alunoes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -77,23 +77,23 @@ namespace Mediares.Controllers
                 return NotFound();
             }
 
-            var turma = await _context.Turma.FindAsync(id);
-            if (turma == null)
+            var aluno = await _context.Aluno.FindAsync(id);
+            if (aluno == null)
             {
                 return NotFound();
             }
-            ViewData["DisciplinaId"] = new SelectList(_context.Disciplina, "DisciplinaId", "DisciplinaId", turma.DisciplinaId);
-            return View(turma);
+            ViewData["TurmaId"] = new SelectList(_context.Turma, "Id", "Id", aluno.TurmaId);
+            return View(aluno);
         }
 
-        // POST: Turmas/Edit/5
+        // POST: Alunoes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,NomeTurma,CargaHoraria,DisciplinaId")] Turma turma)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Telefone,TurmaId")] Aluno aluno)
         {
-            if (id != turma.Id)
+            if (id != aluno.Id)
             {
                 return NotFound();
             }
@@ -102,12 +102,12 @@ namespace Mediares.Controllers
             {
                 try
                 {
-                    _context.Update(turma);
+                    _context.Update(aluno);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TurmaExists(turma.Id))
+                    if (!AlunoExists(aluno.Id))
                     {
                         return NotFound();
                     }
@@ -118,11 +118,11 @@ namespace Mediares.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DisciplinaId"] = new SelectList(_context.Disciplina, "DisciplinaId", "DisciplinaId", turma.DisciplinaId);
-            return View(turma);
+            ViewData["TurmaId"] = new SelectList(_context.Turma, "Id", "Id", aluno.TurmaId);
+            return View(aluno);
         }
 
-        // GET: Turmas/Delete/5
+        // GET: Alunoes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -130,31 +130,31 @@ namespace Mediares.Controllers
                 return NotFound();
             }
 
-            var turma = await _context.Turma
-                .Include(t => t.Disciplina)
+            var aluno = await _context.Aluno
+                .Include(a => a.Turma)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (turma == null)
+            if (aluno == null)
             {
                 return NotFound();
             }
 
-            return View(turma);
+            return View(aluno);
         }
 
-        // POST: Turmas/Delete/5
+        // POST: Alunoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var turma = await _context.Turma.FindAsync(id);
-            _context.Turma.Remove(turma);
+            var aluno = await _context.Aluno.FindAsync(id);
+            _context.Aluno.Remove(aluno);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TurmaExists(int id)
+        private bool AlunoExists(int id)
         {
-            return _context.Turma.Any(e => e.Id == id);
+            return _context.Aluno.Any(e => e.Id == id);
         }
     }
 }

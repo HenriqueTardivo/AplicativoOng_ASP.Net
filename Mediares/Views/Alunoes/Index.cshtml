@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Mediares.Models.Turma>
+﻿@model IEnumerable<Mediares.Models.Aluno>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,13 +13,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.NomeTurma)
+                @Html.DisplayNameFor(model => model.Nome)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CargaHoraria)
+                @Html.DisplayNameFor(model => model.Telefone)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Disciplina)
+                @Html.DisplayNameFor(model => model.Turma)
             </th>
             <th></th>
         </tr>
@@ -28,13 +28,13 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.NomeTurma)
+                @Html.DisplayFor(modelItem => item.Nome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CargaHoraria)
+                @Html.DisplayFor(modelItem => item.Telefone)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Disciplina.DisciplinaId)
+                @Html.DisplayFor(modelItem => item.Turma.Id)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

@@ -19,7 +19,7 @@ namespace Mediares.Services
 
 		public List<Disciplina> FindAll()
 		{
-			return _context.Disciplina.OrderBy(x => x.Nome).ToList();
+			return _context.Disciplina.ToList();
 		}
 	}
 

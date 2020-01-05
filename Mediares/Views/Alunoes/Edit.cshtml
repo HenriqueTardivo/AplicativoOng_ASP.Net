@@ -1,4 +1,4 @@
-﻿@model Mediares.Models.Disciplina
+﻿@model Mediares.Models.Aluno
 
 @{
     ViewData["Title"] = "Edit";
@@ -6,17 +6,27 @@
 
 <h1>Edit</h1>
 
-<h4>Disciplina</h4>
+<h4>Aluno</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="DisciplinaId" />
+            <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="Nome" class="control-label"></label>
                 <input asp-for="Nome" class="form-control" />
                 <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefone" class="control-label"></label>
+                <input asp-for="Telefone" class="form-control" />
+                <span asp-validation-for="Telefone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TurmaId" class="control-label"></label>
+                <select asp-for="TurmaId" class="form-control" asp-items="ViewBag.TurmaId"></select>
+                <span asp-validation-for="TurmaId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

@@ -2,14 +2,16 @@
 using Mediares.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Mediares.Migrations
 {
     [DbContext(typeof(MediaresContext))]
-    partial class MediaresContextModelSnapshot : ModelSnapshot
+    [Migration("20200103184105_fk")]
+    partial class fk
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
